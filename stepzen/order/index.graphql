@@ -1,0 +1,40 @@
+type Order {
+  carrier: String
+  createdAt: Date
+  shippingCost: Int
+  trackingId: String
+  Address: String
+  City: String
+  Lat: Float
+  Lng: Float
+  # connect tracking items to order payload
+  trackingItems: TrackingItems
+  @materializer(
+    query: "getTrackingItemsById"
+    arguments: [{ name: "id", field: "trackingId"}]
+  )
+}
+
+  type OrderList {
+    name: ID
+    value: Order
+  }
+
+
+  # Tracking id 
+  # Result typed as JSON since it has fields ["-N6rOvLXK2t39x-Bp0UP", "-N6rQ_YDMNTjq_mCbhZN", "-N6rQsEqX4vt-0cBA336", "-N6rQvnBSkz2kglMvr5H", "-N6rSQz62DlXFPbd32CD"] that are invalid graphql identifiers
+  # """
+type Query {
+
+    getOrdersById(id: ID): Order
+    @rest(
+      endpoint: "https://delivery-service-rn-default-rtdb.firebaseio.com/orders/$id.json"
+    )
+
+    getOrders: [OrderList]
+    @rest(
+      endpoint: "https://delivery-service-rn-default-rtdb.firebaseio.com/orders.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray"}]
+    )
+}
+

@@ -15,16 +15,30 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kayzmann.deliveryservice"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.kayzmann.deliveryservice"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "apiUrl": "process.env.STEPZEN_API_KEY",
+      "eas": {
+        "projectId": "859681c3-cfef-41ea-a329-6deaa5c547ab"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/859681c3-cfef-41ea-a329-6deaa5c547ab"
     }
   }
 }

@@ -8,8 +8,8 @@ import Constants from 'expo-constants';
 
 
 const client = new ApolloClient({
-  uri: 'https://acatzingo.stepzen.net/api/knotted-spaniel/__graphql',
-  headers: {'Authorization':`apikey acatzingo::stepzen.io+1000::e5a4aac8984ff2b1f5ac23c5985075633ac05ef72476ba8b63d3746e59dc3739`},
+  uri: 'baseURL',
+  headers: {'Authorization':`APIKEY`},
   cache: new InMemoryCache(),
 });
 
